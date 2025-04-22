@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const NotificationController = require("../../controllers/notification/NotificationController");
+const NotificationController = require("../../controllers/notification/notificationController");
 const authMiddleware = require("../../middleware/authMiddleware");
 
 // ✅ Ambil semua notifikasi (untuk admin)
