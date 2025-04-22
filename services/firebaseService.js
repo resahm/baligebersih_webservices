@@ -1,7 +1,6 @@
 const admin = require('firebase-admin');
 
-// Ambil file serviceAccountKey dari Firebase Console
-const serviceAccount = require('../config/firebase-admin-sdk.json');
+const serviceAccount = JSON.parse(process.env.FIREBASE_ADMIN_KEY.replace(/\\n/g, '\n'));
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -10,11 +9,8 @@ admin.initializeApp({
 const sendNotificationToUser = async (fcmToken, title, body, data = {}) => {
   const message = {
     token: fcmToken,
-    notification: {
-      title,
-      body,
-    },
-    data, // optional untuk payload tambahan
+    notification: { title, body },
+    data,
   };
 
   try {
