@@ -1,7 +1,7 @@
 const admin = require('firebase-admin');
 
 // Ambil file serviceAccountKey dari Firebase Console
-const serviceAccount = JSON.parse(process.env.FIREBASE_ADMIN_KEY);
+const serviceAccount = require('../config/firebase-admin-sdk.json'); // Langsung require file JSON
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
